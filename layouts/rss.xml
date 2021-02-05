@@ -36,9 +36,7 @@
         {{ .Summary | html }}
         <!-- This <div> includes a read more link, but only if the summary is truncated. -->
         {{ if .Truncated }}
-        <div>
-          {{ printf "<a href=%q>Read More…</a>" .RelPermalink | safeHTML }}
-        </div>
+        {{ printf "<div><a href=%q>Read More…</a></div>" .RelPermalink }}
         {{ end }}
       </description>
     </item>
