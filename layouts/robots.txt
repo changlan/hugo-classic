@@ -1,4 +1,3 @@
 # robots.txt
 User-agent: *
-Disallow: 
-Disallow: /cgi-bin/
+Sitemap: {{ .Sitemap.Filename | default "sitemap.xml" | absURL }}
