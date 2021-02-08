@@ -18,8 +18,17 @@
 <div class="content-wrapper">
   <main>
     {{ .Content }}
-    <a href="/"> >> Home</a>
+    <!-- <a href="/"> >> Home</a> -->
   </main>
+  {{ $related := .Site.RegularPages.Related . | first 3 }}
+    {{ with $related }}
+    <h3>Related</h3>
+    <ul>
+      {{ range . }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+    {{ end }}
 </div>
 
 <br><hr>
