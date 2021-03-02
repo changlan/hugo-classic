@@ -13,10 +13,11 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{ if .IsHome }}
-    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.Description }}{{ end }}">
-    {{ end }}
-    <title>{{ if .Title }} {{ .Title }} | {{end}}{{ .Site.Title }}</title>
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}">
+    <meta name="theme-color" content="#3d60c1">
+
+    <title>{{ if and .Title .IsPage }} {{ .Title }} - {{end}}{{ .Site.Title }}</title>
+    <link rel="canonical" href="{{ .Permalink }}" itemprop="url" />
     <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}" />
     <link rel="stylesheet" href="{{ "/css/fonts.css" | relURL }}" />
     {{ range .Site.Params.custom_css -}}
