@@ -12,14 +12,13 @@
       <li class="pull-left {{ if eq $name $title }}current{{ else if eq $section $name }}current{{ else if eq $title (pluralize $name) }}current{{ end }}">
         <a href="{{ .URL }}">{{ lower .Name }}</a>
       </li>
-      {{end}}
+      {{ end }}
 
-      {{ range .Site.Menus.feed }}
-      {{ $name := lower .Name}}
+      {{ range .Site.Menus.social }}
       <li class="pull-right">
-        <a href="{{ .URL }}">{{ lower .Name}}</a>
+        <a href="{{ .URL }}">{{ .Pre }}</a>
       </li>
-      {{end}}
+      {{ end }}
 
     </ul>
   </nav>
