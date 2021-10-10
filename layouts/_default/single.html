@@ -1,7 +1,11 @@
 {{ partial "header.html" . }}
 <div class="article-meta">
 <h1><span class="title">{{ .Title | markdownify }}</span></h1>
-{{ with .Params.author }}<p class="author">作者: {{ . }}</p>{{ end }}
+{{ if isset .Params "author" }}
+  <p class="author">作者: {{ .Params.author }}</p>
+{{ else }}
+  <p class="author">作者: {{ .Site.Params.author }}</p>
+{{ end }}
 {{ if .Params.date }}<p class="date">{{ .Date.Format "2006/01/02" }}</p>{{ end }}
 </div>
 
